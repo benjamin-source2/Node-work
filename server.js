@@ -17,8 +17,8 @@ app.use('/appointments', appointmentRouter);
 con.connect((err) => {
     if (err) throw err;
     console.log("connected to database");
-    app.listen(3001, (err) => {
+    app.listen(3000, (err) => {
 
-        console.log('server is running on port 3001');
+        console.log('server is running on port 3000');
     })
 })
