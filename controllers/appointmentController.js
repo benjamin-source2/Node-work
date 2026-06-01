@@ -2,7 +2,7 @@
 const con = require('../model/db');
 
 function AddAppointment (req, res) {
-    
+    // Adding new appointment 
     const {patient_id, doctor_id, date} = req.body;
     const sql = "INSERT INTO appointments (patient_id, doctor_id, appointment_date) VALUES (?, ?, ?)";
     con.query(sql, [patient_id, doctor_id, date], (err) => {
@@ -13,7 +13,7 @@ function AddAppointment (req, res) {
         return res.status(201).json({ message: "Appointment  added successfully" });
     })
 }
-
+// Get all appointments
 function GetAppointments (req, res) {
     const sql = "SELECT * FROM appointments";
     con.query(sql, (err, results) => {
@@ -24,7 +24,7 @@ function GetAppointments (req, res) {
         return res.status(200).json({ appointments: results });
     })
 }
-
+// Update appointment details
 function updateAppointment (req, res) {
     const { id } = req.params;
     const { patient_id, doctor_id, date } = req.body;
@@ -40,7 +40,7 @@ function updateAppointment (req, res) {
     });
 
 }
-
+// Delete an appointment
 function deleteAppointment (req, res) {
     const { id } = req.params;
     const sql = "DELETE FROM appointments WHERE appointment_id = ?";

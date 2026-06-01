@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const con = require('../model/db');
-
+// Add a new user
 async function AddUser (req, res) {
     
     const {username, password} = req.body;
@@ -17,7 +17,7 @@ async function AddUser (req, res) {
         return res.status(201).json({ message: "User added successfully" });
     })
 }
-
+// Get all users
 function GetUsers (req, res) {
     const sql = "SELECT * FROM users";
     con.query(sql, (err, results) => {
@@ -29,7 +29,7 @@ function GetUsers (req, res) {
         return res.status(200).json({ users: results });
     })
 }
-
+//  Update user details
 function updateUser (req, res) {
     const { id } = req.params;
     const { username, password } = req.body;
@@ -45,7 +45,7 @@ function updateUser (req, res) {
     });
 
 }
-
+// Delete a user
 function deleteUser (req, res) {
     const { id } = req.params;
     const sql = "DELETE FROM users WHERE user_id = ?";
@@ -57,7 +57,7 @@ function deleteUser (req, res) {
         return res.status(200).json({ message: "account deleted successfully" });
     });
 }
-
+// Exporting the functions to be used in routes
 module.exports = {
     AddUser,
     GetUsers,

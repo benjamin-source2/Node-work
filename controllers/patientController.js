@@ -1,5 +1,5 @@
 const con = require('../model/db');
-
+// Add a new patient
 async function AddPatient (req, res) {
     
     const {name, phone} = req.body;
@@ -12,7 +12,7 @@ async function AddPatient (req, res) {
         return res.status(201).json({ message: "Patient added successfully" });
     })
 }
-
+// Get all patients
 
 function GetPatients (req, res) {
     const sql = "SELECT * FROM patients";
@@ -24,7 +24,7 @@ function GetPatients (req, res) {
         return res.status(200).json({ patients: results });
     })
 }
-
+// Update patient details
 function updatePatients (req, res) {
     const { id } = req.params;
     const { name, phone } = req.body;
@@ -40,7 +40,7 @@ function updatePatients (req, res) {
     });
 
 }
-
+// Delete a patient
 function deletePatient (req, res) {
     const { id } = req.params;
     const sql = "DELETE FROM patients WHERE patient_id = ?";

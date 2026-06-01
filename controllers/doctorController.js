@@ -1,6 +1,6 @@
 
 const con = require('../model/db');
-
+// Add a new doctor
  function AddDoctor (req, res)  {
     
     const {name, phone, specialization} = req.body;
@@ -14,6 +14,7 @@ const con = require('../model/db');
     })
 }
 
+// Get all doctors
 
 function GetDoctors (req, res) {
     const sql = "SELECT * FROM doctors";
@@ -25,7 +26,7 @@ function GetDoctors (req, res) {
         return res.status(200).json({ doctors: results });
     })
 }
-
+// Update doctor details
 function updateDoctors (req, res) {
     const { id } = req.params;
     const { name, phone, specialization } = req.body;
@@ -41,7 +42,7 @@ function updateDoctors (req, res) {
     });
 
 }
-
+// Delete a doctor
 function deleteDoctor (req, res) {
     const { id } = req.params;
     const sql = "DELETE FROM doctors WHERE doctor_id = ?";
